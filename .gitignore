@@ -11,6 +11,7 @@
 .mtj.tmp/
 
 *.xml
+*.iml
 *.idea
 
 # Package Files #
