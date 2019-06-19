@@ -7,8 +7,10 @@ public class First {
     public static void main(String[] args) {
 
         First first = new First();
+        System.out.print("Введите вес в килограммах: ");
         BigDecimal weight = new BigDecimal(first.setVariable());
-        BigDecimal distance = new BigDecimal("10000");
+        System.out.print("Введите расстояние в километрах: ");
+        BigDecimal distance = new BigDecimal(first.setVariable());
         BigDecimal pricePerKg = new BigDecimal("30");
         BigDecimal pricePerKm = new BigDecimal("50");
 
@@ -19,7 +21,6 @@ public class First {
 
     public String setVariable(){
         Scanner scan = new Scanner(System.in);
-        System.out.print("Введите величину; ");
         String var = scan.nextLine();
         return var;
     }
