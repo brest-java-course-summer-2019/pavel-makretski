@@ -5,7 +5,7 @@ public class First {
     public static void main(String[] args) {
 
         Console console = new Console();
-        System.out.println("Для расчета стоимости посылки правильно заполните данные. \nДля отмены и выхода из программы нажмите 'Q'");
+        System.out.println("Для расчета стоимости посылки правильно заполните данные. \nДля отмены и выхода из программы нажмите 'Q'\n");
 
         System.out.print("Укажите вес в килограммах: ");
         BigDecimal weight = new BigDecimal(console.setVariable());
