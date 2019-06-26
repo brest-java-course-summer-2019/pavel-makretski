@@ -3,6 +3,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+// Реализовать передачу в BigDecimal
+
 public class Config {
 
     int price(int distance) throws IOException {
