@@ -1,8 +1,8 @@
 import java.math.BigDecimal;
-import java.util.Scanner;
 
-public class First {
+public class Program {
     public static void main(String[] args) {
+
 
         Console console = new Console();
         System.out.println("Для расчета стоимости посылки правильно заполните данные. \nДля отмены и выхода из программы нажмите 'Q'\n");
@@ -11,6 +11,7 @@ public class First {
         BigDecimal weight = new BigDecimal(console.setVariable());
         System.out.print("Укажите расстояние в километрах: ");
         BigDecimal distance = new BigDecimal(console.setVariable());
+
         System.out.println("Стоимость за кг будет взята из справочника");
         BigDecimal pricePerKg = new BigDecimal("30");
         System.out.println("Стоимость за км будет взята из справочника");
