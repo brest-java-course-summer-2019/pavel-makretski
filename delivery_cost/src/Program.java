@@ -1,6 +1,11 @@
 import java.io.IOException;
 import java.math.BigDecimal;
 
+// Переделать под цикл, для непрерывного ввода через isAlive например
+// Никогда не прятать ошибки
+// Все на английском!
+
+
 public class Program {
     public static void main(String[] args) throws IOException {
 
