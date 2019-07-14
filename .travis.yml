@@ -1,6 +1,0 @@
-language: java
-jdk:
-  - oraclejdk11
-before_script: cd try_maven/example/
-script:
-- mvn clean test coveralls:report
