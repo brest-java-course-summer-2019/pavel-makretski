@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>by.polmak</groupId>
@@ -29,6 +31,8 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <maven>1.3</maven>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
@@ -44,7 +48,7 @@
         <checkstyle.version>8.22</checkstyle.version>
         <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
         <jacoco-maven-plugin.version>0.8.4</jacoco-maven-plugin.version>
-        <jacoco.bundle.coveredratio.minimum>10%</jacoco.bundle.coveredratio.minimum>
+        <jacoco.bundle.coveredratio.minimum>65%</jacoco.bundle.coveredratio.minimum>
 
         <java.showDeprecation>false</java.showDeprecation>
         <java.showWarnings>false</java.showWarnings>
@@ -154,6 +158,7 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>${maven-compiler-plugin.version}</version>
                 </plugin>
+
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>
@@ -234,6 +239,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <debug>${java.debug}</debug>
                     <optimize>${java.optimize}</optimize>
@@ -245,7 +251,7 @@
                 <dependencies>
                     <dependency>
                         <groupId>org.ow2.asm</groupId>
-                        <artifactId>asm</artifactId>
+                        <artifactId>asm</artifactId> <!-- Bytecode manipulator -->
                         <version>${asm.version}</version>
                     </dependency>
                 </dependencies>
@@ -254,7 +260,7 @@
             <!-- Test and Code Analysis -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId> <!-- Modular test, starts all test files -->
+                <artifactId>maven-surefire-plugin</artifactId> <!-- Turn on modular tests -->
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <includes>
@@ -265,7 +271,8 @@
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-pmd-plugin</artifactId>
+                <artifactId>maven-pmd-plugin</artifactId> <!-- Coding rule tester -->
+                <version>${maven-pmd-plugin.vesrion}</version>
                 <configuration>
                     <failOnViolation>true
                     </failOnViolation>
@@ -282,7 +289,8 @@
 
             <plugin>
                 <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
+                <artifactId>jacoco-maven-plugin</artifactId> <!-- Code coverage library -->
+                <version>${jacoco-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -297,7 +305,6 @@
                         <configuration>
                             <rules>
                                 <rule>
-                                    <!--https://dzone.com/articles/reporting-code-coverage-using-maven-and-jacoco-plu-->
                                     <element>PACKAGE</element>
                                     <limits>
                                         <limit>
@@ -319,9 +326,11 @@
                     </execution>
                 </executions>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
+                <artifactId>maven-checkstyle-plugin</artifactId> <!-- Check quality and code style -->
+                <version>${maven-checkstyle-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>verify-checkstyle</id>
@@ -332,25 +341,30 @@
                     </execution>
                 </executions>
             </plugin>
+
             <plugin>
                 <groupId>org.eluder.coveralls</groupId>
-                <artifactId>coveralls-maven-plugin</artifactId>
+                <artifactId>coveralls-maven-plugin</artifactId>  <!-- Provides test coverage -->
+                <version>${coveralls-maven-plugin.version}</version>
             </plugin>
 
             <!-- Documentation -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
+                <version>${maven-site-plugin.vesrion}</version>
             </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>${maven-project-info-reports-plugin.version}</version>
             </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven-javadoc-plugin.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -368,6 +382,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco-maven-plugin.version}</version>
                 <reportSets>
                     <reportSet>
                         <reports>
@@ -380,6 +395,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
+                <version>${maven-pmd-plugin.vesrion}</version>
                 <configuration>
                     <sourceEncoding>utf-8</sourceEncoding>
                     <minimumTokens>100</minimumTokens>
@@ -398,10 +414,11 @@
                     </reportSet>
                 </reportSets>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.0.1</version>
+                <version>${maven-javadoc-plugin.version}</version>
                 <reportSets>
                     <reportSet>
                         <id>default</id>
@@ -421,9 +438,8 @@
             <plugin>
                 <groupId>org.eluder.coveralls</groupId>
                 <artifactId>coveralls-maven-plugin</artifactId>
+                <version>${coveralls-maven-plugin.version}</version>
             </plugin>
         </plugins>
     </reporting>
-
-
 </project>
