@@ -42,7 +42,7 @@
         <maven-checkstyle-plugin.version>3.1.0</maven-checkstyle-plugin.version>
         <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
         <jacoco-maven-plugin.version>0.8.4</jacoco-maven-plugin.version>
-        <jacoco.bundle.coveredratio.minimum>65%</jacoco.bundle.coveredratio.minimum>
+        <jacoco.bundle.coveredratio.minimum>0%</jacoco.bundle.coveredratio.minimum>
 
         <java.showDeprecation>false</java.showDeprecation>
         <java.showWarnings>false</java.showWarnings>
