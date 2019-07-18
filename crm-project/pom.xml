@@ -6,7 +6,7 @@
 
     <groupId>by.polmak</groupId>
     <artifactId>crm-project</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>MakCRM</name>
@@ -22,8 +22,7 @@
     <distributionManagement>
         <site>
             <id>${project.artifactId}-site</id>
-            <!--suppress UnresolvedMavenProperty -->
-            <url>${project.baseUrl}</url>
+            <url>${project.baseUri}</url>
         </site>
     </distributionManagement>
 
@@ -38,12 +37,14 @@
 
         <maven-site-plugin.vesrion>3.7.1</maven-site-plugin.vesrion>
         <maven-javadoc-plugin.version>3.1.1</maven-javadoc-plugin.version>
+        <maven-project-info-reports-plugin.version>3.0.0</maven-project-info-reports-plugin.version>
 
         <maven-pmd-plugin.vesrion>3.12.0</maven-pmd-plugin.vesrion>
         <maven-checkstyle-plugin.version>3.1.0</maven-checkstyle-plugin.version>
+        <checkstyle.version>8.22</checkstyle.version>
         <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
         <jacoco-maven-plugin.version>0.8.4</jacoco-maven-plugin.version>
-        <jacoco.bundle.coveredratio.minimum>0%</jacoco.bundle.coveredratio.minimum>
+        <jacoco.bundle.coveredratio.minimum>10%</jacoco.bundle.coveredratio.minimum>
 
         <java.showDeprecation>false</java.showDeprecation>
         <java.showWarnings>false</java.showWarnings>
@@ -53,6 +54,7 @@
         <org.springframework.version>5.1.8.RELEASE</org.springframework.version>
         <h2.version>1.4.199</h2.version>
         <junit.version>5.5.0</junit.version>
+        <asm.version>6.2</asm.version>
     </properties>
 
     <dependencyManagement>
@@ -163,6 +165,13 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${maven-surefire-plugin.version}</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.ow2.asm</groupId>
+                            <artifactId>asm</artifactId>
+                            <version>${asm.version}</version>
+                        </dependency>
+                    </dependencies>
                 </plugin>
 
                 <plugin>
@@ -175,6 +184,16 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-checkstyle-plugin</artifactId>
                     <version>${maven-checkstyle-plugin.version}</version>
+                    <configuration>
+                        <configLocation>google_checks.xml</configLocation>
+                    </configuration>
+                    <dependencies>
+                        <dependency>
+                            <groupId>com.puppycrawl.tools</groupId>
+                            <artifactId>checkstyle</artifactId>
+                            <version>${checkstyle.version}</version>
+                        </dependency>
+                    </dependencies>
                 </plugin>
 
                 <plugin>
@@ -201,6 +220,12 @@
                     <artifactId>maven-javadoc-plugin</artifactId>
                     <version>${maven-javadoc-plugin.version}</version>
                 </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-project-info-reports-plugin</artifactId>
+                    <version>${maven-project-info-reports-plugin.version}</version>
+                </plugin>
             </plugins>
         </pluginManagement>
 
@@ -209,7 +234,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <debug>${java.debug}</debug>
                     <optimize>${java.optimize}</optimize>
@@ -218,11 +242,13 @@
                     <showDeprecation>${java.showDeprecation}</showDeprecation>
                     <showWarnings>${java.showWarnings}</showWarnings>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>${maven-jar-plugin.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.ow2.asm</groupId>
+                        <artifactId>asm</artifactId>
+                        <version>${asm.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
 
             <!-- Test and Code Analysis -->
@@ -237,15 +263,12 @@
                 </configuration>
             </plugin>
 
-
-
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-pmd-plugin</artifactId> <!-- Static source code analyzer -->
-                <version>${maven-pmd-plugin.vesrion}</version>
+                <artifactId>maven-pmd-plugin</artifactId>
                 <configuration>
-                    <failOnViolation>true</failOnViolation>
+                    <failOnViolation>true
+                    </failOnViolation>
                     <printFailingErrors>true</printFailingErrors>
                 </configuration>
                 <executions>
@@ -259,8 +282,7 @@
 
             <plugin>
                 <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId> <!-- Records execution coverage data -->
-                <version>${jacoco-maven-plugin.version}</version>
+                <artifactId>jacoco-maven-plugin</artifactId>
                 <executions>
                     <execution>
                         <goals>
@@ -275,6 +297,7 @@
                         <configuration>
                             <rules>
                                 <rule>
+                                    <!--https://dzone.com/articles/reporting-code-coverage-using-maven-and-jacoco-plu-->
                                     <element>PACKAGE</element>
                                     <limits>
                                         <limit>
@@ -296,17 +319,33 @@
                     </execution>
                 </executions>
             </plugin>
-
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>verify-checkstyle</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.eluder.coveralls</groupId>
-                <artifactId>coveralls-maven-plugin</artifactId> <!-- Test coverage -->
-                <version>${coveralls-maven-plugin.version}</version>
+                <artifactId>coveralls-maven-plugin</artifactId>
             </plugin>
 
             <!-- Documentation -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
             </plugin>
 
             <plugin>
@@ -323,4 +362,68 @@
             </plugin>
         </plugins>
     </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>report</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <configuration>
+                    <sourceEncoding>utf-8</sourceEncoding>
+                    <minimumTokens>100</minimumTokens>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${maven-checkstyle-plugin.version}</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>checkstyle</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.0.1</version>
+                <reportSets>
+                    <reportSet>
+                        <id>default</id>
+                        <reports>
+                            <report>javadoc</report>
+                        </reports>
+                    </reportSet>
+                    <reportSet>
+                        <id>aggregate</id>
+                        <reports>
+                            <report>aggregate</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+
+            <plugin>
+                <groupId>org.eluder.coveralls</groupId>
+                <artifactId>coveralls-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </reporting>
+
+
 </project>

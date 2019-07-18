@@ -1,3 +1,8 @@
 language: java
-before_script: cd crm-project/
-script: mvn clean test coveralls:report
+dist: trusty
+jdk:
+  - oraclejdk8
+before_script:
+  - cd crm-project/
+script:
+  - mvn clean test coveralls:report
