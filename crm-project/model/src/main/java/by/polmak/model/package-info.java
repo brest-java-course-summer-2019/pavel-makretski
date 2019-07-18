@@ -1,4 +1,4 @@
 /**
- * Contains Human Resources model classes.
+ * Contains Mak CRM model classes.
  */
 package by.polmak.model;
