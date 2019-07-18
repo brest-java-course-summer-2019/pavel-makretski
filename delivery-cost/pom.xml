@@ -6,10 +6,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>by.polmak</groupId>
-  <artifactId>delivery_cost</artifactId>
+  <artifactId>delivery-cost</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <name>Delivery Cost</name>
+  <name>McDelivery</name>
   <description>Group common project</description>
   <url>...</url>
 
@@ -27,7 +27,6 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
-
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>

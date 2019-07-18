@@ -5,10 +5,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>model</artifactId>
+    <artifactId>test-db</artifactId>
     <packaging>jar</packaging>
-    <name>MakCRM Model</name>
-    <description>...</description>
+    <name>MakCRM Test-DB</name>
+    <description>Test database unit</description>
 
     <parent>
         <groupId>by.polmak</groupId>
@@ -18,18 +18,13 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>org.junit.vintage</groupId>
-            <artifactId>junit-vintage-engine</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
         </dependency>
     </dependencies>
 </project>
