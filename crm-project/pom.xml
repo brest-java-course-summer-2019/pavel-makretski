@@ -19,6 +19,7 @@
         <module>model</module>
         <module>dao</module>
         <module>test-db</module>
+        <module>web-app</module>
     </modules>
 
     <distributionManagement>
@@ -31,6 +32,11 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <java.showDeprecation>false</java.showDeprecation>
+        <java.showWarnings>false</java.showWarnings>
+        <java.optimize>true</java.optimize>
+        <java.debug>true</java.debug>
 
         <maven>1.3</maven>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -50,15 +56,13 @@
         <jacoco-maven-plugin.version>0.8.4</jacoco-maven-plugin.version>
         <jacoco.bundle.coveredratio.minimum>65%</jacoco.bundle.coveredratio.minimum>
 
-        <java.showDeprecation>false</java.showDeprecation>
-        <java.showWarnings>false</java.showWarnings>
-        <java.optimize>true</java.optimize>
-        <java.debug>true</java.debug>
-
         <org.springframework.version>5.1.8.RELEASE</org.springframework.version>
         <h2.version>1.4.199</h2.version>
         <junit.version>5.5.0</junit.version>
         <asm.version>6.2</asm.version>
+        <thymeleaf-spring5.version>3.0.11.RELEASE</thymeleaf-spring5.version>
+        <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
+        <jetty-maven-plugin.version>9.4.19.v20190610</jetty-maven-plugin.version>
     </properties>
 
     <dependencyManagement>
@@ -81,6 +85,12 @@
                 <artifactId>test-db</artifactId>
                 <version>${project.version}</version>
                 <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>by.polmak</groupId>
+                <artifactId>web-app</artifactId>
+                <version>${project.version}</version>
             </dependency>
 
             <!-- Spring Framework -->
@@ -111,6 +121,18 @@
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-jdbc</artifactId>
+                <version>${org.springframework.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${org.springframework.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
                 <version>${org.springframework.version}</version>
             </dependency>
 
@@ -146,6 +168,18 @@
 
             <!-- Logback Section-->
 
+            <!-- WEB Layer -->
+            <dependency>
+                <groupId>org.thymeleaf</groupId>
+                <artifactId>thymeleaf-spring5</artifactId>
+                <version>${thymeleaf-spring5.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>${javax.servlet-api.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -293,6 +327,7 @@
                 <version>${jacoco-maven-plugin.version}</version>
                 <executions>
                     <execution>
+                        <id>jacoco-prepare</id>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
@@ -318,7 +353,7 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>report</id>
+                        <id>jacoco-report</id>
                         <phase>test</phase>
                         <goals>
                             <goal>report</goal>
@@ -373,6 +408,21 @@
                         <phase>site</phase>
                     </execution>
                 </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>${jetty-maven-plugin.version}</version>
+                <configuration>
+                    <scanIntervalSeconds>10</scanIntervalSeconds>
+                    <webApp>
+                        <contextPath>/</contextPath>
+                    </webApp>
+                    <httpConnector>
+                        <port>8080</port>
+                    </httpConnector>
+                </configuration>
             </plugin>
         </plugins>
     </build>
