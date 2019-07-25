@@ -47,7 +47,6 @@ cd crm-project/target/site/index.html
 TODO: add deploying instruction and server tests
 
 ---
-> Made with love by Pavel Makretski
-> Brest Epam Java Summer Course 2019 
+> Made with love by Pavel Makretski on Brest Epam Java Summer Course 2019 
 
 
