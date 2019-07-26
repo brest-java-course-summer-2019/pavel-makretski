@@ -20,6 +20,7 @@
         <module>dao</module>
         <module>test-db</module>
         <module>web-app</module>
+        <module>service</module>
     </modules>
 
     <distributionManagement>
@@ -58,12 +59,15 @@
         <jacoco.bundle.coveredratio.minimum>65%</jacoco.bundle.coveredratio.minimum>
 
         <org.springframework.version>5.1.8.RELEASE</org.springframework.version>
+        <thymeleaf-spring5.version>3.0.11.RELEASE</thymeleaf-spring5.version>
         <h2.version>1.4.199</h2.version>
         <junit.version>5.5.0</junit.version>
         <asm.version>6.2</asm.version>
-        <thymeleaf-spring5.version>3.0.11.RELEASE</thymeleaf-spring5.version>
         <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
         <jetty-maven-plugin.version>9.4.19.v20190610</jetty-maven-plugin.version>
+        <slf4j-api.version>1.7.26</slf4j-api.version>
+        <logback-core.version>1.2.3</logback-core.version>
+        <logback-classic.version>1.2.3</logback-classic.version>
     </properties>
 
     <dependencyManagement>
@@ -91,6 +95,12 @@
             <dependency>
                 <groupId>by.polmak</groupId>
                 <artifactId>web-app</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>by.polmak</groupId>
+                <artifactId>service</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
@@ -168,6 +178,23 @@
             </dependency>
 
             <!-- Logback Section-->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j-api.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>${logback-core.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback-classic.version}</version>
+            </dependency>
 
             <!-- WEB Layer -->
             <dependency>
@@ -252,6 +279,21 @@
                     <groupId>org.eluder.coveralls</groupId>
                     <artifactId>coveralls-maven-plugin</artifactId>
                     <version>${coveralls-maven-plugin.version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.eclipse.jetty</groupId>
+                    <artifactId>jetty-maven-plugin</artifactId> <!-- Jetty Server for testing war application -->
+                    <version>9.4.19.v20190610</version>
+                    <configuration>
+                        <scanIntervalSeconds>10</scanIntervalSeconds>
+                        <webApp>
+                            <contextPath>/</contextPath>
+                        </webApp>
+                        <httpConnector>
+                            <port>8080</port>
+                        </httpConnector>
+                    </configuration>
                 </plugin>
 
                 <!-- Documentation -->
@@ -415,21 +457,6 @@
                         <phase>site</phase>
                     </execution>
                 </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-maven-plugin</artifactId>
-                <version>${jetty-maven-plugin.version}</version>
-                <configuration>
-                    <scanIntervalSeconds>10</scanIntervalSeconds>
-                    <webApp>
-                        <contextPath>/</contextPath>
-                    </webApp>
-                    <httpConnector>
-                        <port>8080</port>
-                    </httpConnector>
-                </configuration>
             </plugin>
         </plugins>
     </build>
