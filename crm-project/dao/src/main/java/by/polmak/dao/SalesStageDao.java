@@ -1,7 +1,6 @@
 package by.polmak.dao;
 
 import by.polmak.model.SalesStage;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -14,7 +13,7 @@ public interface SalesStageDao {
      * Persist new Sales Stage in Sales Funnel.
      *
      * @param salesStageName new Sales Stage.
-     * @return new salesStage object.
+     * @return new Sales Stage object.
      */
     SalesStage add(SalesStage salesStageName);
 
