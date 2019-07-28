@@ -11,7 +11,6 @@ CREATE TABLE deals (
   deal_date DATE NOT NULL,
   client_name VARCHAR(255) NOT NULL,
   budget INT NOT NULL,
-  department_id INT NOT NULL,
   stage_id int NOT NULL,
   PRIMARY KEY (deal_id),
   FOREIGN KEY (stage_id) REFERENCES stage (stage_id)
