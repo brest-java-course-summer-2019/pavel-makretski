@@ -3,7 +3,7 @@ package by.polmak.model;
 import java.math.BigDecimal;
 
 /**
- * POJO SalesStage for model, contains SaleStages.
+ * POJO SalesFunnel for model, contains all SaleStages.
  */
 public class SalesStage {
 
