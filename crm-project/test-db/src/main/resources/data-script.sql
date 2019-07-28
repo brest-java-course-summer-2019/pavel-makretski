@@ -1,6 +1,6 @@
-INSERT INTO stage (stage_id, stage_name) VALUES (1, 'FIRST_CONTACT');
-INSERT INTO stage (stage_id, stage_name) VALUES (2, 'NEGOTIATION');
-INSERT INTO stage (stage_id, stage_name) VALUES (3, 'PRODUCTION');
+INSERT INTO sales_stage (sales_stage_id, sales_stage_name) VALUES (1, 'FIRST_CONTACT');
+INSERT INTO sales_stage (sales_stage_id, sales_stage_name) VALUES (2, 'NEGOTIATION');
+INSERT INTO sales_stage (sales_stage_id, sales_stage_name) VALUES (3, 'PRODUCTION');
 
 INSERT INTO deal (deal_id, deal_date, client_name, budget, stage_id) VALUES (1, '2019-01-01', 'CLIENT_42', '4000', 1);
 INSERT INTO deal (deal_id, deal_date, client_name, budget, stage_id) VALUES (2, '2019-02-02', 'CLIENT_43', '5000', 1);
