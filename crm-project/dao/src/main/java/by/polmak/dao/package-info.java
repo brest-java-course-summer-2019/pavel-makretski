@@ -1,4 +1,4 @@
 /**
- * Contains Mak CRM dao classes.
+ * Contains Mak CRM DAO Classes.
  */
 package by.polmak.dao;

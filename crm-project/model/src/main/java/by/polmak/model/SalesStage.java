@@ -3,9 +3,9 @@ package by.polmak.model;
 import java.math.BigDecimal;
 
 /**
- * POJO SalesFunnel for model, contains SaleStages.
+ * POJO SalesStage for model, contains SaleStages.
  */
-public class SalesFunnel {
+public class SalesStage {
 
     /**
      * SalesStage Id.
@@ -16,7 +16,7 @@ public class SalesFunnel {
      */
     private String salesStageName;
     /**
-     * Total budget of the SalesFunnel.
+     * Total budget of the SalesStage.
      */
     private BigDecimal totalBudget;
 
