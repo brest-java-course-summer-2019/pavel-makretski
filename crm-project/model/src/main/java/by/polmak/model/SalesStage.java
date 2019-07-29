@@ -1,7 +1,5 @@
 package by.polmak.model;
 
-import java.math.BigDecimal;
-
 /**
  * POJO SalesFunnel for model, contains all SaleStages.
  */
@@ -18,7 +16,7 @@ public class SalesStage {
     /**
      * Total budget of the SalesStage.
      */
-    private BigDecimal totalBudget;
+    private Integer totalBudget;
 
     /**
      * Returns <code>Integer</code> representation of this salesStageId.
@@ -61,7 +59,7 @@ public class SalesStage {
      *
      * @return totalBudget.
      */
-    public BigDecimal getTotalBudget() {
+    public Integer getTotalBudget() {
         return totalBudget;
     }
 
@@ -70,7 +68,7 @@ public class SalesStage {
      *
      * @param totalBudget totalBudget.
      */
-    public void setTotalBudget(final BigDecimal totalBudget) {
+    public void setTotalBudget(final Integer totalBudget) {
         this.totalBudget = totalBudget;
     }
 
