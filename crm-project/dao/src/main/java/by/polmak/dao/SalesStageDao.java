@@ -22,28 +22,28 @@ public interface SalesStageDao {
      *
      * @param salesStageName Sales Stage.
      */
-    void update(SalesStage salesStageName);
-
-    /**
-     * Delete Sales Stage from Funnel with specified id.
-     *
-     * @param salesStageId Sales Stage specified id.
-     */
-    void delete(Integer salesStageId);
-
-    /**
-     * Get Sales Funnel.
-     *
-     * @return sales Stages list.
-     */
-    List<SalesStage> findAll();
-
-    /**
-     * Get SalesStage By Id.
-     *
-     * @param salesStageId Sales Stage specified id.
-     * @return SalesStage via id.
-     */
-    Optional<SalesStage> findById(Integer salesStageId);
+//    void update(SalesStage salesStageName);
+//
+//    /**
+//     * Delete Sales Stage from Funnel with specified id.
+//     *
+//     * @param salesStageId Sales Stage specified id.
+//     */
+//    void delete(Integer salesStageId);
+//
+//    /**
+//     * Get Sales Funnel.
+//     *
+//     * @return sales Stages list.
+//     */
+//    List<SalesStage> findAll();
+//
+//    /**
+//     * Get SalesStage By Id.
+//     *
+//     * @param salesStageId Sales Stage specified id.
+//     * @return SalesStage via id.
+//     */
+//    Optional<SalesStage> findById(Integer salesStageId);
 
 }

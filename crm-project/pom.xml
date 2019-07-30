@@ -33,7 +33,6 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
         <java.showDeprecation>false</java.showDeprecation>
         <java.showWarnings>false</java.showWarnings>
         <java.optimize>true</java.optimize>
@@ -46,28 +45,27 @@
         <maven-surefire-plugin.version>3.0.0-M3</maven-surefire-plugin.version>
         <maven-jar-plugin.version>3.1.2</maven-jar-plugin.version>
         <maven-war-plugin.version>3.2.3</maven-war-plugin.version>
+        <org.springframework.version>5.1.8.RELEASE</org.springframework.version>
+        <asm.version>6.2</asm.version>
 
         <maven-site-plugin.vesrion>3.7.1</maven-site-plugin.vesrion>
         <maven-javadoc-plugin.version>3.1.1</maven-javadoc-plugin.version>
         <maven-project-info-reports-plugin.version>3.0.0</maven-project-info-reports-plugin.version>
-
         <maven-pmd-plugin.vesrion>3.12.0</maven-pmd-plugin.vesrion>
         <maven-checkstyle-plugin.version>3.1.0</maven-checkstyle-plugin.version>
         <checkstyle.version>8.22</checkstyle.version>
         <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
         <jacoco-maven-plugin.version>0.8.4</jacoco-maven-plugin.version>
         <jacoco.bundle.coveredratio.minimum>5%</jacoco.bundle.coveredratio.minimum>
-
-        <org.springframework.version>5.1.8.RELEASE</org.springframework.version>
-        <thymeleaf-spring5.version>3.0.11.RELEASE</thymeleaf-spring5.version>
-        <h2.version>1.4.199</h2.version>
         <junit.version>5.5.0</junit.version>
-        <asm.version>6.2</asm.version>
-        <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
-        <jetty-maven-plugin.version>9.4.19.v20190610</jetty-maven-plugin.version>
         <slf4j-api.version>1.7.26</slf4j-api.version>
         <logback-core.version>1.2.3</logback-core.version>
         <logback-classic.version>1.2.3</logback-classic.version>
+
+        <thymeleaf-spring5.version>3.0.11.RELEASE</thymeleaf-spring5.version>
+        <h2.version>1.4.199</h2.version>
+        <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
+        <jetty-maven-plugin.version>9.4.19.v20190610</jetty-maven-plugin.version>
     </properties>
 
     <dependencyManagement>
@@ -510,12 +508,12 @@
                             <report>javadoc</report>
                         </reports>
                     </reportSet>
-                    <reportSet>
-                        <id>aggregate</id>
-                        <reports>
-                            <report>aggregate</report>
-                        </reports>
-                    </reportSet>
+<!--                    <reportSet>-->
+<!--                        <id>aggregate</id>-->
+<!--                        <reports>-->
+<!--                            <report>aggregate</report>-->
+<!--                        </reports>-->
+<!--                    </reportSet>-->
                 </reportSets>
             </plugin>
 

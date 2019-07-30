@@ -34,7 +34,6 @@ cmake-build-*/
 
 # File-based project format
 *.iws
-*.xml
 *.iml
 
 # IntelliJ
