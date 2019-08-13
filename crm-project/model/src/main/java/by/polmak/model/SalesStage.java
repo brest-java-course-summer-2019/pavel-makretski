@@ -3,45 +3,39 @@ package by.polmak.model;
 import java.math.BigDecimal;
 
 /**
- * POJO SalesFunnel for model, contains all SaleStages.
+ * POJO SalesFunnel for back-end model, contains all SaleStages.
+ *
+ * @author Polmak Retski
  */
 public class SalesStage {
 
-    /**
-     * SalesStage Id.
-     */
     private Integer salesStageId;
-    /**
-     * SalesStage Name.
-     */
     private String salesStageName;
-    /**
-     * Total budget of the SalesStage.
-     */
-    private BigDecimal totalBudget;
+    private Integer salesStageDealsNumber;
+    private BigDecimal salesStageBudget;
 
     /**
-     * Returns <code>Integer</code> representation of this salesStageId.
+     * Returns <code>Integer</code> representation of current Stage Identifier.
      *
-     * @return salesStageId SalesStage Id.
+     * @return Sales Stage identifier.
      */
     public Integer getSalesStageId() {
         return salesStageId;
     }
 
     /**
-     * Sets the SalesStage's identifier.
+     * Sets the Sales Stage's identifier.
      *
-     * @param salesStageId SalesStage Id.
+     * @param salesStageId Sales Stage identifier.
      */
     public void setSalesStageId(final Integer salesStageId) {
         this.salesStageId = salesStageId;
     }
 
     /**
-     * Returns <code>String</code> representation of this salesStageName.
+     * Returns <code>String</code> representation of Stage Name.
      *
-     * @return salesStageName SalesStage Name.
+     * @return Sales Stage Name.
      */
     public String getSalesStageName() {
         return salesStageName;
@@ -50,28 +44,46 @@ public class SalesStage {
     /**
      * Sets the SalesStage's name.
      *
-     * @param salesStageName SalesStage Name.
+     * @param salesStageName Sales Stage Name.
      */
     public void setSalesStageName(final String salesStageName) {
         this.salesStageName = salesStageName;
     }
 
     /**
-     * Returns <code>BigDecimal</code> representation of total budget for the current SalesStage.
+     * Returns <code>Integer</code> representation of Deals number on the current Stage.
      *
-     * @return totalBudget.
+     * @return Deals Number on Sale Stage.
      */
-    public BigDecimal getTotalBudget() {
-        return totalBudget;
+    public Integer getSalesStageDealsNumber() {
+        return salesStageDealsNumber;
+    }
+
+    /**
+     * Sets the SalesStage's identifier.
+     *
+     * @param salesStageDealsNumber Sales Stage Deals Number.
+     */
+    public void setSalesStageDealsNumber(final Integer salesStageDealsNumber) {
+        this.salesStageDealsNumber = salesStageDealsNumber;
+    }
+
+    /**
+     * Returns <code>BigDecimal</code> representation of budget for the current SalesStage.
+     *
+     * @return current Sales Stage Budget.
+     */
+    public BigDecimal getSalesStageBudget() {
+        return salesStageBudget;
     }
 
     /**
      * Sets for the current SalesStage total budget.
      *
-     * @param totalBudget totalBudget.
+     * @param salesStageBudget Sales Stage Budget.
      */
-    public void setTotalBudget(final BigDecimal totalBudget) {
-        this.totalBudget = totalBudget;
+    public void setSalesStageBudget(final BigDecimal salesStageBudget) {
+        this.salesStageBudget = salesStageBudget;
     }
 
     /**
@@ -79,9 +91,10 @@ public class SalesStage {
      */
     @Override
     public String toString() {
-        return "SalesStage{"
-                + "\nsalesStageId=" + salesStageId
-                + ", salesStageName='" + salesStageName + " \\"
-                + ", totalBudget=" + totalBudget + "}";
+        return "SalesStage\n{"
+                + "salesStageId = " + salesStageId + " - "
+                + "salesStageName = '" + salesStageName + "' \\ "
+                + "salesStageDealsNumber = " + salesStageDealsNumber + " \\ "
+                + "salesStageBudget = " + salesStageBudget + "}";
     }
 }

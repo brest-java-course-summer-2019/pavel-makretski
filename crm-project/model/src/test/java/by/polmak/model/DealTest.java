@@ -2,6 +2,7 @@ package by.polmak.model;
 
 import org.junit.Assert;
 import org.junit.Test;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -38,8 +39,8 @@ public class DealTest {
 
     @Test
     public void getBudget(){
-        deal.setBudget(new BigDecimal(4000.42));
-        Assert.assertEquals(deal.getBudget(), new BigDecimal(4000.42));
+        deal.setDealBudget(new BigDecimal(4000.42));
+        Assert.assertEquals(deal.getDealBudget(), new BigDecimal(4000.42));
     }
 
     @Test
@@ -51,8 +52,9 @@ public class DealTest {
     @Test
     public void checkToString() {
         String expected = deal.toString();
-        String actual = "Deal{dealId=null, dealDate='null', clientFirstName='null', "
-                + "clientLastName='null', budget=null, salesStageId=null}";
+        String actual = "Deal"
+                + "\n{salesStageId = null - dealId = null - dealDate = null "
+                + "\\ clientName = 'null null \\ dealBudget=null}";
         Assert.assertEquals(expected, actual);
     }
 }
