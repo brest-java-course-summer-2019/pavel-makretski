@@ -15,7 +15,7 @@
     <artifactId>model</artifactId>
     <packaging>jar</packaging>
     <name>MakCRM Model</name>
-    <description>...</description>
+    <description>Java back-end entity</description>
 
     <dependencies>
         <dependency>
