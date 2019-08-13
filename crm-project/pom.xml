@@ -16,11 +16,16 @@
     <url>http://www.example.com</url>
 
     <modules>
+        <!-- Client Layer -->
+        <module>web-app</module>
+
+        <!-- Logic Layer -->
         <module>model</module>
+        <module>service</module>
+
+        <!-- Data Layer -->
         <module>dao</module>
         <module>test-db</module>
-        <module>web-app</module>
-        <module>service</module>
     </modules>
 
     <distributionManagement>
@@ -38,6 +43,7 @@
         <java.optimize>true</java.optimize>
         <java.debug>true</java.debug>
 
+        <!-- Essential -->
         <maven>1.3</maven>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -47,7 +53,9 @@
         <maven-war-plugin.version>3.2.3</maven-war-plugin.version>
         <org.springframework.version>5.1.8.RELEASE</org.springframework.version>
         <asm.version>6.2</asm.version>
+        <h2.version>1.4.199</h2.version>
 
+        <!-- Documents -->
         <maven-site-plugin.vesrion>3.7.1</maven-site-plugin.vesrion>
         <maven-javadoc-plugin.version>3.1.1</maven-javadoc-plugin.version>
         <maven-project-info-reports-plugin.version>3.0.0</maven-project-info-reports-plugin.version>
@@ -55,18 +63,24 @@
         <maven-pmd-plugin.vesrion>3.12.0</maven-pmd-plugin.vesrion>
         <maven-checkstyle-plugin.version>3.1.0</maven-checkstyle-plugin.version>
         <checkstyle.version>8.22</checkstyle.version>
-        <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
-        <jacoco-maven-plugin.version>0.8.4</jacoco-maven-plugin.version>
-        <jacoco.bundle.coveredratio.minimum>5%</jacoco.bundle.coveredratio.minimum>
-        <junit.version>5.5.0</junit.version>
         <slf4j-api.version>1.7.26</slf4j-api.version>
         <logback-core.version>1.2.3</logback-core.version>
         <logback-classic.version>1.2.3</logback-classic.version>
 
+        <!-- Web -->
         <thymeleaf-spring5.version>3.0.11.RELEASE</thymeleaf-spring5.version>
-        <h2.version>1.4.199</h2.version>
+        <json-path.version>2.0.0</json-path.version>
+        <jackson-databind.version>2.9.4</jackson-databind.version>
         <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
+
+        <!-- Test -->
+        <junit.version>5.5.0</junit.version>
         <jetty-maven-plugin.version>9.4.19.v20190610</jetty-maven-plugin.version>
+        <hamcrest-all.version>1.3</hamcrest-all.version>
+        <mockito.version>2.28.2</mockito.version>
+        <coveralls.version>4.3.0</coveralls.version>
+        <jacoco-maven-plugin.version>0.8.4</jacoco-maven-plugin.version>
+        <jacoco.bundle.coveredratio.minimum>70%</jacoco.bundle.coveredratio.minimum>
     </properties>
 
     <dependencyManagement>
@@ -89,12 +103,6 @@
                 <artifactId>test-db</artifactId>
                 <version>${project.version}</version>
                 <scope>test</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>by.polmak</groupId>
-                <artifactId>web-app</artifactId>
-                <version>${project.version}</version>
             </dependency>
 
             <dependency>
@@ -122,30 +130,6 @@
                 <version>${org.springframework.version}</version>
             </dependency>
 
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-test</artifactId>
-                <version>${org.springframework.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-jdbc</artifactId>
-                <version>${org.springframework.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-webmvc</artifactId>
-                <version>${org.springframework.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-web</artifactId>
-                <version>${org.springframework.version}</version>
-            </dependency>
-
             <!-- Data Base -->
             <dependency>
                 <groupId>com.h2database</groupId>
@@ -154,7 +138,19 @@
                 <scope>test</scope>
             </dependency>
 
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jdbc</artifactId>
+                <version>${org.springframework.version}</version>
+            </dependency>
+
             <!-- Tests -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${org.springframework.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.junit.jupiter</groupId>
                 <artifactId>junit-jupiter-api</artifactId>
@@ -173,6 +169,34 @@
                 <groupId>org.junit.vintage</groupId>
                 <artifactId>junit-vintage-engine</artifactId>
                 <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.jayway.jsonpath</groupId>
+                <artifactId>json-path</artifactId>
+                <version>${json-path.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hamcrest</groupId>
+                <artifactId>hamcrest-all</artifactId>
+                <version>${hamcrest-all.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-core</artifactId>
+                <version>${mockito.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-junit-jupiter</artifactId>
+                <version>${mockito.version}</version>
                 <scope>test</scope>
             </dependency>
 
@@ -197,6 +221,18 @@
 
             <!-- WEB Layer -->
             <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${org.springframework.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>${org.springframework.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>org.thymeleaf</groupId>
                 <artifactId>thymeleaf-spring5</artifactId>
                 <version>${thymeleaf-spring5.version}</version>
@@ -206,6 +242,12 @@
                 <groupId>javax.servlet</groupId>
                 <artifactId>javax.servlet-api</artifactId>
                 <version>${javax.servlet-api.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson-databind.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -241,7 +283,7 @@
                         <dependency>
                             <groupId>org.ow2.asm</groupId>
                             <artifactId>asm</artifactId>
-                            <version>${asm.version}</version>
+                            <version>6.2</version>
                         </dependency>
                     </dependencies>
                 </plugin>
@@ -277,13 +319,13 @@
                 <plugin>
                     <groupId>org.eluder.coveralls</groupId>
                     <artifactId>coveralls-maven-plugin</artifactId>
-                    <version>${coveralls-maven-plugin.version}</version>
+                    <version>${coveralls.version}</version>
                 </plugin>
 
                 <plugin>
                     <groupId>org.eclipse.jetty</groupId>
                     <artifactId>jetty-maven-plugin</artifactId> <!-- Jetty Server for testing war application -->
-                    <version>9.4.19.v20190610</version>
+                    <version>${jetty-maven-plugin.version}</version>
                     <configuration>
                         <scanIntervalSeconds>10</scanIntervalSeconds>
                         <webApp>
@@ -327,7 +369,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <debug>${java.debug}</debug>
                     <optimize>${java.optimize}</optimize>
@@ -349,7 +390,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId> <!-- Turn on modular tests -->
-                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <includes>
                         <include>**/*Test</include>
@@ -360,7 +400,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId> <!-- Coding rule tester -->
-                <version>${maven-pmd-plugin.vesrion}</version>
                 <configuration>
                     <failOnViolation>true
                     </failOnViolation>
@@ -377,11 +416,9 @@
 
             <plugin>
                 <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId> <!-- Code coverage library -->
-                <version>${jacoco-maven-plugin.version}</version>
+                <artifactId>jacoco-maven-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>jacoco-prepare</id>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
@@ -407,7 +444,7 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>jacoco-report</id>
+                        <id>report</id>
                         <phase>test</phase>
                         <goals>
                             <goal>report</goal>
@@ -419,7 +456,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId> <!-- Check quality and code style -->
-                <version>${maven-checkstyle-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>verify-checkstyle</id>
@@ -434,26 +470,22 @@
             <plugin>
                 <groupId>org.eluder.coveralls</groupId>
                 <artifactId>coveralls-maven-plugin</artifactId>  <!-- Provides test coverage -->
-                <version>${coveralls-maven-plugin.version}</version>
             </plugin>
 
             <!-- Documentation -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
-                <version>${maven-site-plugin.vesrion}</version>
             </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>${maven-project-info-reports-plugin.version}</version>
             </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>${maven-javadoc-plugin.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -477,7 +509,6 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>${jacoco-maven-plugin.version}</version>
                 <reportSets>
                     <reportSet>
                         <reports>
@@ -490,7 +521,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
-                <version>${maven-pmd-plugin.vesrion}</version>
                 <configuration>
                     <sourceEncoding>utf-8</sourceEncoding>
                     <minimumTokens>100</minimumTokens>
@@ -500,7 +530,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>${maven-checkstyle-plugin.version}</version>
                 <reportSets>
                     <reportSet>
                         <reports>
@@ -513,7 +542,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>${maven-javadoc-plugin.version}</version>
                 <reportSets>
                     <reportSet>
                         <id>default</id>
@@ -532,7 +560,6 @@
             <plugin>
                 <groupId>org.eluder.coveralls</groupId>
                 <artifactId>coveralls-maven-plugin</artifactId>
-                <version>${coveralls-maven-plugin.version}</version>
             </plugin>
         </plugins>
     </reporting>
