@@ -51,6 +51,7 @@
         <maven-site-plugin.vesrion>3.7.1</maven-site-plugin.vesrion>
         <maven-javadoc-plugin.version>3.1.1</maven-javadoc-plugin.version>
         <maven-project-info-reports-plugin.version>3.0.0</maven-project-info-reports-plugin.version>
+        <maven-jxr-plugin.version>3.0.0</maven-jxr-plugin.version>
         <maven-pmd-plugin.vesrion>3.12.0</maven-pmd-plugin.vesrion>
         <maven-checkstyle-plugin.version>3.1.0</maven-checkstyle-plugin.version>
         <checkstyle.version>8.22</checkstyle.version>
@@ -312,6 +313,12 @@
                     <artifactId>maven-project-info-reports-plugin</artifactId>
                     <version>${maven-project-info-reports-plugin.version}</version>
                 </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jxr-plugin</artifactId>
+                    <version>${maven-jxr-plugin.version}</version>
+                </plugin>
             </plugins>
         </pluginManagement>
 
@@ -456,6 +463,12 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+            </plugin>
+
         </plugins>
     </build>
 
@@ -508,13 +521,12 @@
                             <report>javadoc</report>
                         </reports>
                     </reportSet>
-<!--                    <reportSet>-->
-<!--                        <id>aggregate</id>-->
-<!--                        <reports>-->
-<!--                            <report>aggregate</report>-->
-<!--                        </reports>-->
-<!--                    </reportSet>-->
                 </reportSets>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
             </plugin>
 
             <plugin>

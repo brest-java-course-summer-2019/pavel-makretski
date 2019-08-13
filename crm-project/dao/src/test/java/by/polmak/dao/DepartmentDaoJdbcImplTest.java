@@ -1,4 +1,4 @@
-//package by.polmak.dao;
+//package com.epam.brest.summer.courses2019.dao;
 //
 //import com.epam.brest.summer.courses2019.model.Department;
 //import org.junit.Assert;
@@ -10,6 +10,7 @@
 //
 //import java.util.List;
 //import java.util.stream.Collectors;
+//
 //import static org.junit.Assert.assertNotNull;
 //import static org.junit.Assert.assertTrue;
 //

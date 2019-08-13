@@ -4,6 +4,9 @@ import org.junit.Assert;
 import org.junit.Test;
 import java.math.BigDecimal;
 
+/**
+ * Unit tests for model Sales Stage.
+ */
 public class SalesStageTest {
 
     SalesStage salesStage = new SalesStage();

@@ -5,6 +5,9 @@ import org.junit.Test;
 import java.math.BigDecimal;
 import java.util.Date;
 
+/**
+ * Unit tests for model Deal.
+ */
 public class DealTest {
 
     private Deal deal = new Deal();
