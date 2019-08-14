@@ -1,26 +1,20 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns="http://www.springframework.org/schema/beans"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/context
-       http://www.springframework.org/schema/context/spring-context.xsd
-       http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="namedParameterJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
         <constructor-arg name="dataSource" ref="dataSource"/>
     </bean>
 
-    <bean id="stageDao" class="by.polmak.dao.SalesStageDaoJdbcImpl">
+
+    <bean id="salesStageDao" class="by.polmak.dao.SalesStageDaoImpl">
         <constructor-arg name="namedParameterJdbcTemplate" ref="namedParameterJdbcTemplate"/>
     </bean>
 
-<!--    <bean id="dealDao" class="by.polmak.dao.DealDaoJdbcImpl">-->
-<!--        <constructor-arg name="namedParameterJdbcTemplate" ref="namedParameterJdbcTemplate"/>-->
-<!--    </bean>-->
-
-
-<!--    <jdbc:embedded-database id="dataSource"/>-->
+    <bean id="dealDao" class="by.polmak.dao.DealDaoImpl">
+        <constructor-arg name="namedParameterJdbcTemplate" ref="namedParameterJdbcTemplate"/>
+    </bean>
 </beans>

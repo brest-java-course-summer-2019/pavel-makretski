@@ -1,8 +1,8 @@
 DROP TABLE IF EXISTS stage;
 CREATE TABLE stage
 (
-    sales_stage_id      INT          NOT NULL,
-    sales_stage_name    VARCHAR(255) NOT NULL,
+    sales_stage_id      INT          NOT NULL AUTO_INCREMENT,
+    sales_stage_name    VARCHAR(255) NOT NULL UNIQUE,
     sales_stage_deals   INT          NOT NULL,
     sales_stage_budget  INT          NOT NULL,
     PRIMARY KEY (sales_stage_id)
@@ -11,7 +11,7 @@ CREATE TABLE stage
 DROP TABLE IF EXISTS deal;
 CREATE TABLE deal
 (
-    deal_id             INT          NOT NULL,
+    deal_id             INT          NOT NULL AUTO_INCREMENT,
     deal_date           DATE         NOT NULL,
     client_first_name   VARCHAR(255) NOT NULL,
     client_last_name    VARCHAR(255) NOT NULL,
