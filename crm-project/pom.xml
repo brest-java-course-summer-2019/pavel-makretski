@@ -53,7 +53,7 @@
 
         <maven-pmd-plugin.vesrion>3.12.0</maven-pmd-plugin.vesrion>
         <maven-checkstyle-plugin.version>3.1.0</maven-checkstyle-plugin.version>
-        <checkstyle.version>8.22</checkstyle.version>
+        <checkstyle.version>8.29</checkstyle.version>
         <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
         <jacoco-maven-plugin.version>0.8.4</jacoco-maven-plugin.version>
         <jacoco.bundle.coveredratio.minimum>5%</jacoco.bundle.coveredratio.minimum>
