@@ -58,7 +58,7 @@
         <jacoco-maven-plugin.version>0.8.4</jacoco-maven-plugin.version>
         <jacoco.bundle.coveredratio.minimum>5%</jacoco.bundle.coveredratio.minimum>
 
-        <org.springframework.version>5.1.8.RELEASE</org.springframework.version>
+        <org.springframework.version>5.3.19</org.springframework.version>
         <thymeleaf-spring5.version>3.0.11.RELEASE</thymeleaf-spring5.version>
         <h2.version>1.4.199</h2.version>
         <junit.version>5.5.0</junit.version>
